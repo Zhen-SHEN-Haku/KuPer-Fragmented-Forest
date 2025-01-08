@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KuPer的碎片森林</title>
+    <link rel="icon" href="pics/IMG_0237.JPG" type="image/jpeg">
+    <link rel="apple-touch-icon" href="pics/IMG_0237.JPG">
+    <link rel="shortcut icon" href="pics/IMG_0237.JPG" type="image/jpeg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-toggle">≡</div>
+        <div class="sidebar-content">
+            <h3>目录</h3>
+            <ul>
+                <li><a href="#home">首页</a></li>
+                <li><a href="#about">关于</a></li>
+                <li><a href="#contact">联系</a></li>
+            </ul>
+        </div>
+    </div>
+    <header class="header-container">
+        <img src="pics/IMG_0237.JPG" alt="公众号图片" class="header-image">
+        <h1>
+            KuPer 的碎片森林
+            <div class="popup">
+                <img src="pics/IMG_7202.JPG" alt="公众号二维码" class="popup-image">
+            </div>
+        </h1>
+        <div class="header-controls">
+            <button id="darkModeToggle" class="theme-toggle">
+                <span class="light-icon">🌞</span>
+                <span class="dark-icon">🌙</span>
+            </button>
+            <div class="search-container">
+                <input type="text" id="searchBox" placeholder="搜索...">
+                <button onclick="search()">搜索</button>
+            </div>
+        </div>
+    </header>
+    <main class="content">
+        <section class="about-section">
+            <h2>我们是谁</h2>
+            <p class="intro-text">我们是两位刚刚毕业的英国留学生，在英国完成了本科和研究生学业，见证了三位首相的更迭和英国女王的历史谢幕。</p>
+            <p class="intro-text">这些年的留学经历让我们收获了宝贵的成长和独特的视角。</p>
+            
+            <div class="profile-cards">
+                <div class="profile-card">
+                    <img src="pics/IMG_0239.JPG" alt="Kuku的照片" class="profile-image">
+                    <p class="profile-text">
+                        <strong>Kuku：</strong>NT 人/ 喜欢打游戏的宅人一枚/ UK生活记录员/ 爱把头发搞成各种颜色的奇怪水瓶座
+                    </p>
+                </div>
+                <div class="profile-card">
+                    <img src="pics/IMG_0239 2.JPG" alt="Perper的照片" class="profile-image">
+                    <p class="profile-text">
+                        <strong>Perper：</strong>NF 人/ 勉强算喜欢打游戏的现充/ 勉强算爱健身+户外运动的碳水爱好者/ 非典型摩羯座
+                    </p>
+                </div>
+            </div>
+
+            <h2>我们的目的</h2>
+            <p class="purpose-text">起初，这个公众号的想法源于Perper想为即将开始英国留学生涯的弟弟整理一份全面的生活经验指南，帮助他更有条理地应对未来的生活。</p>
+            <p class="purpose-text">在整理过程中，我们意识到这些内容不仅对弟弟有帮助，也可能为更多计划留学或正在适应英国生活的人提供实用信息。于是，便有了这个公众号的诞生。</p>
+            <p class="purpose-text">我们专注于分享与生活相关的经验，希望通过自己的总结和思考，帮助大家更轻松地融入英国的日常生活。内容仅限生活领域，不涉及学业规划或指导。</p>
+
+            <h2>主要内容</h2>
+            <p class="content-text">我们的公众号将围绕英国生活展开，涵盖从日常所需的生活技巧到一些实用的英语表达，例如看医生、购买生活用品、办理电话卡以及筛选床品等。</p>
+            <p class="content-text">我们也会偶尔分享一些个人的推荐，如餐厅体验或其他有趣的生活小发现。</p>
+            <p class="content-text">所有内容基于我们的个人经验，并参考了一些其他分享与资料，希望能为大家提供实用的信息。</p>
+
+            <h2>免责声明</h2>
+            <div class="disclaimer">
+                <p>我们所分享的内容仅供参考，不构成专业建议。</p>
+                <p>每个人的生活经历和需求不同，请根据自身情况选择适合自己的解决方案。</p>
+            </div>
+
+            <h2>你的声音很重要</h2>
+            <div class="feedback-section">
+                <p>我们会定期查看<span class="email-container"><span class="email-text">邮件</span><button class="copy-btn" data-email="KuperUK@outlook.com">复制邮箱地址</button></span>，欢迎大家把感兴趣的话题发送给我们。</p>
+                <p>你的提问和建议，将会是我们未来更新的方向。</p>
+            </div>
+        </section>
+    </main>
+    <div id="results"></div>
+    <script src="script.js"></script>
+</body>
+</html>
