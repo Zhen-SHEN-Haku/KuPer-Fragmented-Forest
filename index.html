@@ -15,9 +15,7 @@
         <div class="sidebar-content">
             <h3>目录</h3>
             <ul>
-                <li><a href="#home">首页</a></li>
-                <li><a href="#about">关于</a></li>
-                <li><a href="#contact">联系</a></li>
+                <li><a href="roommate-faq.html">室友十问</a></li>
             </ul>
         </div>
     </div>
@@ -36,7 +34,8 @@
             </button>
             <div class="search-container">
                 <input type="text" id="searchBox" placeholder="搜索...">
-                <button onclick="search()">搜索</button>
+                <button onclick="search(searchBox.value)">搜索</button>
+                <div class="search-dropdown"></div>
             </div>
         </div>
     </header>
@@ -85,6 +84,63 @@
         </section>
     </main>
     <div id="results"></div>
+    <script src="searchIndex.js"></script>
     <script src="script.js"></script>
+    <input type="text" id="searchInput" placeholder="搜索..." autocomplete="off">
+    <div id="suggestions" style="display: none; border: 1px solid #ccc; max-height: 150px; overflow-y: auto;">
+        <ul id="suggestionList"></ul>
+    </div>
+
+    <ul id="contentList">
+        <li><a href="#home">首页</a></li>
+        <li><a href="#about">关于</a></li>
+        <li><a href="#contact">联系</a></li>
+    </ul>
+
+    <div id="home" style="margin-top: 1000px;">首页内容</div>
+    <div id="about" style="margin-top: 1000px;">关于内容</div>
+    <div id="contact" style="margin-top: 1000px;">联系内容</div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const suggestions = document.getElementById('suggestions');
+        const suggestionList = document.getElementById('suggestionList');
+        const contentList = document.getElementById('contentList');
+
+        searchInput.addEventListener('input', function() {
+            const filter = searchInput.value.toLowerCase();
+            suggestionList.innerHTML = ''; // 清空建议列表
+            suggestions.style.display = 'none'; // 隐藏建议框
+
+            if (filter) {
+                const items = contentList.getElementsByTagName('li');
+                let hasSuggestions = false;
+
+                for (let i = 0; i < items.length; i++) {
+                    const item = items[i];
+                    const text = item.textContent || item.innerText;
+
+                    if (text.toLowerCase().includes(filter)) {
+                        hasSuggestions = true;
+                        const suggestionItem = document.createElement('li');
+                        suggestionItem.innerHTML = `<a href="${item.querySelector('a').getAttribute('href')}">${text}</a>`;
+                        suggestionList.appendChild(suggestionItem);
+                    }
+                }
+
+                if (hasSuggestions) {
+                    suggestions.style.display = 'block'; // 显示建议框
+                }
+            }
+        });
+
+        // 点击建议项后，隐藏建议框
+        suggestionList.addEventListener('click', function(event) {
+            if (event.target.tagName === 'A') {
+                searchInput.value = ''; // 清空搜索框
+                suggestions.style.display = 'none'; // 隐藏建议框
+            }
+        });
+    </script>
 </body>
 </html>

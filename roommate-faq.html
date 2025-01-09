@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>室友十问 - KuPer的碎片森林</title>
+    <link rel="icon" href="pics/IMG_0237.JPG" type="image/jpeg">
+    <link rel="apple-touch-icon" href="pics/IMG_0237.JPG">
+    <link rel="shortcut icon" href="pics/IMG_0237.JPG" type="image/jpeg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 保持相同的侧边栏和头部 -->
+    <div class="sidebar">
+        <div class="sidebar-toggle">≡</div>
+        <div class="sidebar-content">
+            <h3>目录</h3>
+            <ul>
+                <li><a href="index.html">返回首页</a></li>
+                <li><a href="roommate-faq.html">室友十问</a></li>
+            </ul>
+        </div>
+    </div>
+    <header class="header-container">
+        <img src="pics/IMG_0237.JPG" alt="公众号图片" class="header-image">
+        <h1>
+            室友十问
+            <div class="popup">
+                <img src="pics/IMG_7202.JPG" alt="公众号二维码" class="popup-image">
+            </div>
+        </h1>
+        <div class="header-controls">
+            <button id="darkModeToggle" class="theme-toggle">
+                <span class="light-icon">🌞</span>
+                <span class="dark-icon">🌙</span>
+            </button>
+            <div class="search-container">
+                <input type="text" id="searchBox" placeholder="搜索...">
+                <button onclick="search(searchBox.value)">搜索</button>
+                <div class="search-dropdown"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="content">
+        <section class="about-section">
+            <h2>室友十问</h2>
+            <p class="intro-text">
+                合租生活中，提前沟通很重要。以下是一些建议在合租前与室友讨论的问题，可以帮助你更好地了解未来室友的生活习惯，避免日后的矛盾。
+            </p>
+
+            <div class="faq-section">
+                <h3>打扫问题</h3>
+                <div class="faq-item">
+                    <h4>公共区域清洁频率</h4>
+                    <p>建议讨论：</p>
+                    <ul>
+                        <li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                多久打扫一次公共区域？
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                是轮流打扫还是一起打扫？
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                是否需要制定清洁表？
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="faq-item">
+                    <h4>洗衣机使用规范</h4>
+                    <p>建议明确：</p>
+                    <ul>
+                        <li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                洗衣机可以清洗哪些物件？
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                是否会使用洗衣机洗袜子、内裤？
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                如何安排洗衣时间？
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="faq-item">
+                    <h4>烹饪后的清洁要求</h4>
+                    <p>需要确认：</p>
+                    <ul>
+                        <li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                烹饪后多久内要完成清洁？
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                清洁范围是否包括地板和灶台？
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                油烟机的清洁频率？
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-section">
+                <h3>生活方式</h3>
+                <div class="faq-item">
+                    <h4>社交活动</h4>
+                    <p>需要沟通：</p>
+                    <ul>
+                        <li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                是否会在家中举办聚会？频率如何？
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                聚会的人数限制？
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                是否允许朋友留宿？如何提前通知？
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="faq-item">
+                    <h4>作息时间</h4>
+                    <p>建议了解：</p>
+                    <ul>
+                        <li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                是早起者还是夜猫子？
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                工作时间是怎样的？
+                            </label>
+                        </li>
+                        </li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                周末的作息是否会有变化？
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="faq-item">
+                    <h4>生活习惯</h4>
+                    <p>重要确认：</p>
+                    <ul>
+                        </li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                是否抽烟？在家中是否会抽烟？
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                对声音、气味是否敏感？
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-section">
+                <h3>金钱问题</h3>
+                <div class="faq-item">
+                    <h4>租金分配</h4>
+                    <p>需要商议：</p>
+                    <ul>
+                        <li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                如果房间大小不一样，租金如何分配？
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                带独立卫浴的房间是否额外收费？
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="faq-item">
+                    <h4>公共支出</h4>
+                    <p>建议明确：</p>
+                    <ul>
+                        <li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                公共区域物品如何出资购置？
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                能源费用（水电气）如何分摊？
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                一方使用频率低（如不用暖气、很少用洗衣机）是否调整分摊比例？
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="faq-item">
+                    <h4>日常开销</h4>
+                    <p>需要约定：</p>
+                    <ul>
+                        <li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                食材采购是否共同进行？
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                生活用品（如厕纸、清洁用品）如何分摊？
+                            </label>
+                        </li>
+                        <li>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                是否需要建立共同账本？
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="searchIndex.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

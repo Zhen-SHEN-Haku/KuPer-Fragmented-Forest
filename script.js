@@ -17,12 +17,107 @@ darkModeToggle.addEventListener('click', () => {
 });
 
 // 搜索功能
-function search() {
-    const searchBox = document.getElementById('searchBox');
-    const results = document.getElementById('results');
-    // 在这里实现搜索逻辑
-    results.innerHTML = `搜索结果: ${searchBox.value}`;
+function search(keyword) {
+    const searchDropdown = document.querySelector('.search-dropdown');
+    searchDropdown.innerHTML = '';
+    
+    if (!keyword.trim()) {
+        searchDropdown.style.display = 'none';
+        return;
+    }
+
+    const results = [];
+
+    // 搜索当前页面内容
+    const contentElements = document.querySelectorAll('.about-section p, .about-section h2, .profile-text, .faq-item li');
+    contentElements.forEach(element => {
+        const text = element.textContent;
+        if (text.toLowerCase().includes(keyword.toLowerCase())) {
+            let section = element.closest('section');
+            let sectionTitle = section?.querySelector('h2')?.textContent || '页面内容';
+            
+            results.push({
+                text: text,
+                element: element,
+                section: sectionTitle,
+                type: 'current'
+            });
+        }
+    });
+
+    // 搜索其他页面内容
+    if (typeof siteSearchIndex !== 'undefined') {
+        siteSearchIndex.pages.forEach(page => {
+            if (window.location.pathname.indexOf(page.url) === -1) {
+                page.content.forEach(content => {
+                    if (content.text.toLowerCase().includes(keyword.toLowerCase())) {
+                        results.push({
+                            text: content.text,
+                            section: content.section,
+                            type: 'external',
+                            url: page.url,
+                            title: page.title
+                        });
+                    }
+                });
+            }
+        });
+    }
+
+    if (results.length > 0) {
+        searchDropdown.style.display = 'block';
+        results.forEach(result => {
+            const resultItem = document.createElement('div');
+            resultItem.className = 'search-result-item';
+            
+            if (result.type === 'current') {
+                resultItem.innerHTML = `
+                    <div class="result-section">${result.section}</div>
+                    <div class="result-text">${result.text}</div>
+                `;
+                resultItem.addEventListener('click', () => {
+                    result.element.scrollIntoView({ behavior: 'smooth' });
+                    searchDropdown.style.display = 'none';
+                });
+            } else {
+                resultItem.innerHTML = `
+                    <div class="result-section">${result.title} - ${result.section}</div>
+                    <div class="result-text">${result.text}</div>
+                `;
+                resultItem.addEventListener('click', () => {
+                    window.location.href = result.url;
+                });
+            }
+            
+            searchDropdown.appendChild(resultItem);
+        });
+    } else {
+        searchDropdown.style.display = 'block';
+        const noResult = document.createElement('div');
+        noResult.className = 'search-result-item no-result';
+        noResult.textContent = '无相关内容';
+        searchDropdown.appendChild(noResult);
+    }
 }
+
+// 实时搜索
+searchBox.addEventListener('input', (e) => {
+    search(e.target.value);
+});
+
+// 回车搜索
+searchBox.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        search(e.target.value);
+    }
+});
+
+// 点击外部关闭搜索结果
+document.addEventListener('click', (e) => {
+    if (!searchBox.contains(e.target) && !searchDropdown.contains(e.target)) {
+        searchDropdown.style.display = 'none';
+    }
+});
 
 // 邮件复制功能
 const emailContainer = document.querySelector('.email-container');
