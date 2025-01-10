@@ -455,9 +455,10 @@ h2 {
 }
 
 .search-result-item {
-    padding: 10px;
+    padding: 12px 15px;
     cursor: pointer;
     border-bottom: 1px solid var(--shadow);
+    transition: background-color 0.2s ease;
 }
 
 .search-result-item:last-child {
@@ -465,15 +466,15 @@ h2 {
 }
 
 .result-section {
-    font-size: 0.8em;
+    font-size: 0.85em;
     color: var(--button-bg);
     margin-bottom: 4px;
 }
 
 .result-text {
-    color: var(--text-color);
-    font-size: 0.9em;
+    font-size: 0.95em;
     line-height: 1.4;
+    color: var(--text-color);
 }
 
 .highlight-text {
@@ -481,10 +482,11 @@ h2 {
     color: var(--header-bg);
     padding: 0 2px;
     border-radius: 2px;
+    font-weight: 500;
 }
 
 .search-result-item:hover {
-    background-color: var(--button-hover);
+    background-color: var(--bg-color);
 }
 
 .search-result-item:hover .result-section,
@@ -619,4 +621,23 @@ h2 {
     border: solid white;
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
+}
+
+.logo-link {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    line-height: 0;
+}
+
+.logo-link:hover {
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.header-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
 } 

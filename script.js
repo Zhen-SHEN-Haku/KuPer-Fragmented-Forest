@@ -27,37 +27,54 @@ function search(keyword) {
     }
 
     const results = [];
+    const addedTexts = new Set();
 
     // 搜索当前页面内容
-    const contentElements = document.querySelectorAll('.about-section p, .about-section h2, .profile-text, .faq-item li');
+    const contentElements = document.querySelectorAll('.faq-item li label, .about-section p, .profile-text');
     contentElements.forEach(element => {
-        const text = element.textContent;
-        if (text.toLowerCase().includes(keyword.toLowerCase())) {
-            let section = element.closest('section');
-            let sectionTitle = section?.querySelector('h2')?.textContent || '页面内容';
+        const text = element.textContent.trim();
+        if (text.toLowerCase().includes(keyword.toLowerCase()) && !addedTexts.has(text)) {
+            let nearestHeading = element.closest('.faq-item')?.querySelector('h4')?.textContent || 
+                               element.closest('.faq-section')?.querySelector('h3')?.textContent ||
+                               element.closest('section')?.querySelector('h2')?.textContent ||
+                               '页面内容';
             
+            const highlightedText = text.replace(
+                new RegExp(keyword, 'gi'),
+                match => `<span class="highlight-text">${match}</span>`
+            );
+
             results.push({
-                text: text,
+                text: highlightedText,
                 element: element,
-                section: sectionTitle,
+                section: nearestHeading,
                 type: 'current'
             });
+            addedTexts.add(text);
         }
     });
 
     // 搜索其他页面内容
     if (typeof siteSearchIndex !== 'undefined') {
+        const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+        
         siteSearchIndex.pages.forEach(page => {
-            if (window.location.pathname.indexOf(page.url) === -1) {
+            if (page.url !== currentPath) {
                 page.content.forEach(content => {
-                    if (content.text.toLowerCase().includes(keyword.toLowerCase())) {
+                    if (content.text.toLowerCase().includes(keyword.toLowerCase()) && !addedTexts.has(content.text)) {
+                        const highlightedText = content.text.replace(
+                            new RegExp(keyword, 'gi'),
+                            match => `<span class="highlight-text">${match}</span>`
+                        );
+
                         results.push({
-                            text: content.text,
+                            text: highlightedText,
                             section: content.section,
                             type: 'external',
                             url: page.url,
                             title: page.title
                         });
+                        addedTexts.add(content.text);
                     }
                 });
             }
@@ -78,6 +95,7 @@ function search(keyword) {
                 resultItem.addEventListener('click', () => {
                     result.element.scrollIntoView({ behavior: 'smooth' });
                     searchDropdown.style.display = 'none';
+                    searchBox.value = '';
                 });
             } else {
                 resultItem.innerHTML = `
