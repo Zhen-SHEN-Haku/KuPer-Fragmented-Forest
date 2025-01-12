@@ -640,4 +640,76 @@ h2 {
     height: 50px;
     object-fit: cover;
     border-radius: 8px;
+}
+
+.discussion-container {
+    background-color: var(--bg-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--shadow);
+    margin: 2rem 0;
+    transition: all 0.3s ease;
+}
+
+.discussion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+/* 图钉按钮样式 */
+.pin-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    transition: transform 0.3s ease;
+}
+
+.pin-toggle.pinned {
+    transform: rotate(-45deg);
+    color: var(--button-bg);
+}
+
+/* 分屏布局样式 */
+.content {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    transition: all 0.3s ease;
+}
+
+.content.with-discussion {
+    margin-right: 32%;
+    max-width: 100%;
+}
+
+.discussion-container.pinned {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 30%;
+    height: 100vh;
+    margin: 0;
+    border-radius: 0;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .pin-toggle {
+        display: none;
+    }
+    
+    .content.with-discussion {
+        margin-right: 0;
+        max-width: 800px;
+    }
 } 

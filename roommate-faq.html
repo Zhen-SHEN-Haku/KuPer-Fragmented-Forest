@@ -298,6 +298,19 @@
                 </div>
             </div>
         </section>
+        <div class="discussion-container">
+            <div class="discussion-header">
+                <h2>讨论区</h2>
+                <button class="pin-toggle">📌</button>
+            </div>
+            <div class="comment-input">
+                <textarea id="newComment" placeholder="发表你的评论..."></textarea>
+                <button onclick="addComment()">发表评论</button>
+            </div>
+            <div class="comments-list" id="commentsList">
+                <!-- 评论将动态插入到这里 -->
+            </div>
+        </div>
     </main>
     <script src="searchIndex.js"></script>
     <script src="script.js"></script>
